@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     const string UNITS_FILENAME = "units.txt";
     const string BUIDLINGS_FILENAME = "buildings.txt";
     const string ROUND_FILENAME = "rounds.txt";
-
+    public float unit;
+    
     Map map;
     UnitAndBuildingManager manager;
     bool isGameOver = false;
@@ -264,12 +265,15 @@ public class GameManager : MonoBehaviour
 
     public float mapWidth;
     public float mapHeight;
+    public GameObject unitMove;
     public GameObject meleeUnit;
     public GameObject rangedUnit;
     public GameObject wizard;
     public GameObject factoryBuilding;
     public GameObject resourceBuilding;
-    
+    public float speed;
+    private string Unit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -288,19 +292,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 movement = new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f), 0);
+        transform.position = movement * speed * Time.deltaTime;
         
     }
-    void CopyBall()
-    {
-        void CopyBall()
-        {
-            Vector3 position = Vector3.left * Random.Range(-5f, 5f);
-            GameObject meleeUnits = Instantiate(meleeUnit, position, Quaternion.identity);
-            Vector3 position2 = Vector3.left * Random.Range(-5f, 5f);
-            GameObject rangedUnits = Instantiate(rangedUnit, position, Quaternion.identity);
-            Vector3 position3 = Vector3.left * Random.Range(-6f, 6f);
-            GameObject wizardUnits = Instantiate(wizard, position, Quaternion.identity);
-        }
-    }
+    
 
 }
